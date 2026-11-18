@@ -188,7 +188,7 @@ x_nodes = np.linspace(0, 1, n_nodes_test)
 u_exact_vals = u_exact_const(x_nodes)
 
 l2_error = compute_12_error(u_exact_vals, u_numerical, n_nodes_test)
-print(f" n_nodes = {n_nodes_test}, h = {h:.4f")
+print(f" n_nodes = {n_nodes_test}, h = {h:.4f"})
 print(f" L^2 error = {l2_error:.6e}")
 
 plt.figure(figsize=(10, 5))
