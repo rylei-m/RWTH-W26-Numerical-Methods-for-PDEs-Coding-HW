@@ -180,7 +180,7 @@ u_exact_const = lambda x: -0.5 * (x - 0.5)**2 + 0.125
 n_nodes_test = 21
 A, h = assemble_stiffness_matrix(n_nodes_test)
 F = assemble_load_vector(n_nodes_test, f_const)
-A_bc, Fbc = dirichlet_application_bc(A, F, n_nodes_test)
+A_bc, F_bc = dirichlet_application_bc(A, F, n_nodes_test)
 u_numerical = solve_system(A_bc, F_bc)
 
 x_nodes = np.linspace(0, 1, n_nodes_test)
