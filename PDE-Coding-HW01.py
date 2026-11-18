@@ -170,7 +170,38 @@ def get_convergence_order(errors):
     return orders 
 
 # Problem 1 
+print("PROBLEM 1")
+print("=" * 75)
 
+f_const = lambda x: np.ones_like(x, dtype=float) if np.isscalar(x) is False 
+else 1.0
+
+u_exact_const = lambda x: -0.5 * (x - 0.5)**2 + 0.125
+
+n_nodes_test = 21
+A, h = assemble_stiffness_matrix(n_nodes_test)
+F = assemble_load_vector(n_nodes_test, f_const)
+A_bc, Fbc = dirichlet_application_bc(A, F, n_nodes_test)
+u_numerical = solve_system(A_bc, F_bc)
+
+x_nodes = np.linspace(0, 1, n_nodes_test)
+u_exact_vals = u_exact_const(x_nodes)
+
+l2_error = compute_12_error(u_exact_vals, u_numerical, n_nodes_test)
+print(f" n_nodes = {n_nodes_test}, h = {h:.4f")
+print(f" L^2 error = {l2_error:.6e}")
+
+plt.figure(figsize=(10, 5))
+plt.plot(x_nodes, u_exact_vals, 'b-', linewidth=2, label='Exact solution')
+plt.plot(x_nodes, u_numerical, 'ro', markersize=5, label='FEM solution')
+plt.xlabel('x')
+plt.ylabel('u(x)')
+plt.title('Problem 1: f ≡ 1 — Numerical vs Exact Solution')
+plt.legend()
+plt.grid(True, alpha=0.3)
+plt.savefig('problem1_solution.png', dpi=150)
+plt.show()
+print("  Plot saved as 'problem1_solution.png'")
 
 # Problem 2
 
