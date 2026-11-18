@@ -99,7 +99,7 @@ def assemble_load_vector(n_nodes, f_func, delta_center=None):
             elif k == i:
                 F[i] = (xip1 - delta_center) / h 
 
-        f *= 2.0
+        F *= 2.0
         return F 
     
     gauss_nodes = np.array([-1.0 / np.sqrt(3.0), 1.0 / np.sqrt(3.0)])
@@ -147,8 +147,8 @@ def compute_12_error(u_exact, u_numerical, n_nodes):
     h = 1.0 / (n_nodes - 1)
     error_squared = (u_exact - u_numerical) ** 2 
     
-    12_integral = h * (0.5 * error_squared[0] + np.sum(error_squared[1:-1]) + 0.5 * error_squared[-1])
-    return np.sqrt(12_integral)
+    l2_integral = h * (0.5 * error_squared[0] + np.sum(error_squared[1:-1]) + 0.5 * error_squared[-1])
+    return np.sqrt(l2_integral)
 
 def compute_linfinity_error(u_exact, u_numerical):
     return np.max(np.abs(u_exact - u_numerical))
@@ -160,8 +160,8 @@ def compute_l1_error(u_exact, u_numerical, n_nodes):
     return l1_integral
 
 def get_convergence_order(errors):
-    orders - []
-    for i in range(len(error) - 1):
+    orders = []
+    for i in range(len(errors) - 1):
         if errors[i] > 0 and errors[i + 1] > 0:
             p = np.log(errors[i] / errors[i + 1]) / np.log(2.0)
             orders.append(p)
