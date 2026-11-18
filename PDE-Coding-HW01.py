@@ -173,8 +173,7 @@ def get_convergence_order(errors):
 print("PROBLEM 1")
 print("=" * 75)
 
-f_const = lambda x: np.ones_like(x, dtype=float) if np.isscalar(x) is False 
-else 1.0
+f_const = lambda x: np.ones_like(x, dtype=float) if np.isscalar(x) is False else 1.0
 
 u_exact_const = lambda x: -0.5 * (x - 0.5)**2 + 0.125
 
