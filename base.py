@@ -29,7 +29,7 @@ def hat_function(x, xi_minus, xi, xip1):
     h = xi - xi_minus
     if np.isscalar(x):
         if xi_minus <= x < = xi:
-            return (x - xi_minus) / h if xi_minus <= x <= xi 
+            return (x - xi_minus) / h 
         else:
             return 0.0
     else:
@@ -374,7 +374,7 @@ print("PROBLEM 2:")
 
 print("\n--- Problem 2a:")
 
-# Analytical solution for f_2(x) = 2thesymbol(x − 0.5):
+# Analytical solution for f_2(x) = 2delta(x − 0.5):
 # solution is Green's function for -u'' = symbol(x−0.5) scaled by 2
 # For -u'' = blah(x−x_c) with u(0)=u(1)=0
 #   u(x) = x(1−x_c) for 0 <= x <= x_c
@@ -440,7 +440,7 @@ u_exact_vals3 = u_exact_sin(x_nodes3)
 
 # Compute L^2 error
 l2_error3 = compute_l2_error(u_exact_vals3, u_numerical3, n_nodes_test3)
-print(f"  n_nodes = {n_nodes_test3}, h = {h3:.4f}")
+print(f"  n_nodes = {n_nodes_test3}, h = {h3:.4f}")l
 print(f"  L^2 error = {l2_error3:.6e}")
 
 # Plot plot plot plot plot 
