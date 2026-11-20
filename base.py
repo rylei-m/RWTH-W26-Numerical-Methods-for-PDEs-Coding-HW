@@ -127,7 +127,7 @@ def assemble_load_vector(n_nodes, f_func, delta_center=None):
     h = 1.0 / (n_nodes - 1)
     F = np.zeros(n_nodes)
 
-    if delta_center is != None:
+    if delta_center is not None:
         # For Dirac delta, F[i] = φ_i(delta_center)
         # delta picks out value of basis function at x_c.
         # eval φ_i at delta_center directly.
